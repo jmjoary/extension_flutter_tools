@@ -14,10 +14,19 @@ extension StringColors on String {
 
 extension HexColor on Color {
   /// Prefixes a hash sign if [leadingHashSign] is set to `true` (default is `true`).
-  String toHex({bool leadingHashSign = true, bool includeAlpha = true}) =>
-      '${leadingHashSign ? '#' : ''}'
-      '${includeAlpha ? alpha.toRadixString(16).padLeft(2, '0') : ''}'
-      '${red.toRadixString(16).padLeft(2, '0')}'
-      '${green.toRadixString(16).padLeft(2, '0')}'
-      '${blue.toRadixString(16).padLeft(2, '0')}';
+  String toHex({bool leadingHashSign = true, bool includeAlpha = true}) {
+    int to255(double value) => (value * 255).round();
+
+    final components = [
+      if (includeAlpha) to255(a),
+      to255(r),
+      to255(g),
+      to255(b),
+    ];
+
+    final hex =
+        components.map((c) => c.toRadixString(16).padLeft(2, '0')).join();
+
+    return '${leadingHashSign ? '#' : ''}$hex';
+  }
 }
