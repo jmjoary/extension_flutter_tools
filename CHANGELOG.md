@@ -1,3 +1,7 @@
+## 1.6.2
+
+- Updated intl dependency to 0.20.2 to match latest flutter version
+
 ## 1.6.1
 
 - Updated intl dependency to 0.20.0

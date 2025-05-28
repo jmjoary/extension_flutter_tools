@@ -1,6 +1,6 @@
 name: extension_flutter_tools
 description: Extensions and functions useful for a flutter app.
-version: 1.6.1
+version: 1.6.2
 repository: https://github.com/maxbritto/extension_flutter_tools
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
-  intl: '>=0.18.0 <=0.20.0'
+  intl: ^0.20.2
   flutter_test:
     sdk: flutter
 
