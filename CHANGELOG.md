@@ -1,3 +1,9 @@
+## 1.6.1
+
+- Updated intl dependency to 0.20.0
+- Updated cached_network_image dependency to 3.4.1
+- Updated inner workings of `toHex` function to use the new color management of Flutter 3.27 (https://docs.flutter.dev/release/breaking-changes/wide-gamut-framework)
+
 ## 1.6.0
 
 - New Widget : `CopyToClipboardButton` : a button that will copy a text to the clipboard when pressed. The text to copy is passed as a parameter to the widget.
