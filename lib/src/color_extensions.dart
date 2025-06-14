@@ -13,20 +13,20 @@ extension StringColors on String {
 }
 
 extension HexColor on Color {
-  /// Prefixes a hash sign if [leadingHashSign] is set to `true` (default is `true`).
-  String toHex({bool leadingHashSign = true, bool includeAlpha = true}) {
-    int to255(double value) => (value * 255).round();
+  int get intAlpha => _floatToInt8(a);
+  int get intRed => _floatToInt8(r);
+  int get intGreen => _floatToInt8(g);
+  int get intBlue => _floatToInt8(b);
 
-    final components = [
-      if (includeAlpha) to255(a),
-      to255(r),
-      to255(g),
-      to255(b),
-    ];
-
-    final hex =
-        components.map((c) => c.toRadixString(16).padLeft(2, '0')).join();
-
-    return '${leadingHashSign ? '#' : ''}$hex';
+  int _floatToInt8(double x) {
+    return (x * 255.0).round() & 0xff;
   }
+
+  /// Prefixes a hash sign if [leadingHashSign] is set to `true` (default is `true`).
+  String toHex({bool leadingHashSign = true, bool includeAlpha = true}) =>
+      '${leadingHashSign ? '#' : ''}'
+      '${includeAlpha ? intAlpha.toRadixString(16).padLeft(2, '0') : ''}'
+      '${intRed.toRadixString(16).padLeft(2, '0')}'
+      '${intGreen.toRadixString(16).padLeft(2, '0')}'
+      '${intBlue.toRadixString(16).padLeft(2, '0')}';
 }
